@@ -252,7 +252,7 @@ function updateLaboLatex(laboRange) {
   if (!block) return;
 
   const baseLaboScore =
-    "\\[\\text{Labo-score} = 20\\cdot\\frac{6}{10}\\cdot \\text{Verslag} + \\frac{4}{10}\\cdot \\text{Attitude}\\]";
+    "\\[\\text{Labo-score} = \\frac{6}{10}\\cdot \\text{Verslag} + \\frac{4}{10}\\cdot \\text{Attitude}\\]";
 
   block.innerHTML = `${baseLaboScore}`;
   if (window.MathJax && window.MathJax.typesetPromise) {
