@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemie score calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <div class="page">
+    <h1>Chemie score calculator</h1>
+    <p>CREDITS: Deze pagina is een uitbreiding van de <a href="https://chemie.woutcorijn.com/" target="_blank">originele versie</a> van Wout Corijn.</p>
+    <div class="form-card">
+      <table class="inputs">
+        <tr>
+          <td>Score partieel:</td>
+          <td><input type="number" id="partieel" min="0" max="20" value="0"></td>
+          <td>/20</td>
+        </tr>
+        <tr>
+          <td>Score organisch:</td>
+          <td><input type="number" id="organisch" min="0" max="35" value="0"></td>
+          <td>/35</td>
+        </tr>
+        <tr>
+          <td>Score anorganisch:</td>
+          <td><input type="number" id="anorganisch" min="0" max="20" value="0"></td>
+          <td>/20</td>
+        </tr>
+        <tr>
+          <td>Score labo:</td>
+          <td><button id="openLaboModal" type="button" class="secondary">Bereken labo punt</button></td>
+        </tr>
+      </table>
+      <div class="button-row">
+        <button id="calculate" type="button">Bereken</button>
+      </div>
+    </div>
+
+    <div id="laboModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="laboTitle">
+      <div class="modal-backdrop" data-close="true"></div>
+      <div class="modal-content">
+        <div class="modal-inner">
+          <div class="modal-header">
+            <h2 id="laboTitle">Labo score</h2>
+            <button id="closeLaboModal" class="icon-button" type="button" aria-label="Sluit venster">×</button>
+          </div>
+        <table class="labo-table">
+          <thead>
+            <tr>
+              <th>Labo</th>
+              <th>Verslag</th>
+              <th>Voorbereidingstest</th>
+              </tr>
+            </thead>
+            <tbody id="laboGrid"></tbody>
+          </table>
+          <br>
+          <div class="modal-score">
+            <p id="LaboScore" class="score-main score-low">Labo score: 0.00 - 0.00 / 20</p>
+          </div>
+          <button id="openCodesModal" type="button">Toon codering-bereik</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="codesModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="codesTitle">
+      <div class="modal-backdrop" data-close="true"></div>
+      <div class="modal-content small">
+        <div class="modal-inner">
+          <div class="modal-header">
+            <h2 id="codesTitle">Codering-bereik</h2>
+            <button id="closeCodesModal" class="icon-button" type="button" aria-label="Sluit venster">×</button>
+          </div>
+          <table class="codes-table">
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Min</th>
+                <th>Max</th>
+              </tr>
+            </thead>
+            <tbody id="codesGrid"></tbody>
+          </table>
+          <p>
+            (Te vinden op Toledo in de vakmap chemie labo.)
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <div class="score-display">
+      <p id="Result" class="score-main score-low">Score: 0.00 / 20</p>
+      <p id="ResultRange" class="score-sub">Min: 0.00 / 20 | Max: 0.00 / 20</p>
+    </div>
+    <br>
+    <div id="mathBlock" class="math"></div>
+    <div id="laboMath" class="math"></div>
+    <br>
+    <p>
+      Disclaimer: De formule is gebaseerd op de informatie die te vinden is op de <a href="https://onderwijsaanbod.kuleuven.be/2025/syllabi/n/JPI0UUN.htm" target="_blank">ECTS</a> fische. Dit is dus een vrij opgestelde formule.<br><br>
+      <i>De berekening van het attitude punt staat nergens uitgeschreven,</i><br>
+      <i>dus het attitude punt is enkel gebaseerd op de voorbereidingstest in deze berekening.</i>
+    </p>
+  </div>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-X0rNg7yGYUvrhnZajcAUlSYwBlC9ZwTe74MkRUYw35vj0IadB1iKsFcQeYJwlaQt" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQIipTCXRrAroIGFYcE8DVBmTZtnzDNDN5ZkW0Cmc2cE4EvQEq+y3HC6lGJ" crossorigin="anonymous"></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
