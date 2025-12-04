@@ -49,7 +49,7 @@ function buildLaboGrid() {
   for (let i = 0; i < 6; i++) {
     const tr = document.createElement("tr");
     const tdLabel = document.createElement("td");
-    tdLabel.textContent = `Labo ${i + 1}`;
+    tdLabel.textContent = `${i + 1}`;
 
     const tdVerslag = document.createElement("td");
     const tdPrep = document.createElement("td");
@@ -266,7 +266,9 @@ function updateLaboScoreDisplay(laboRange) {
   const min = laboRange.min;
   const max = laboRange.max;
   const avg = (min + max) / 2;
-  el.textContent = `Labo score: ${min.toFixed(2)} - ${max.toFixed(2)} / 20`;
+  el.innerHTML = `Labo score:<br><span class="score-value">${min.toFixed(
+    2
+  )} - ${max.toFixed(2)} / 20</span>`;
   el.classList.remove("score-low", "score-mid", "score-high", "score-neutral");
   if (laboRange.filled === 0) {
     el.classList.add("score-neutral");

@@ -3,6 +3,11 @@
   background: #fff;
   color: #111;
 }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   display: flex;
@@ -106,10 +111,19 @@ button.secondary {
   border: 1px solid #ccc;
   padding: 6px 8px;
   text-align: center;
+  white-space: nowrap;
 }
-.labo-table th,
-.labo-table td {
-  width: calc(100% / 3);
+.labo-table th:first-child,
+.labo-table td:first-child {
+  width: 18%;
+}
+.labo-table th:nth-child(2),
+.labo-table td:nth-child(2) {
+  width: 42%;
+}
+.labo-table th:nth-child(3),
+.labo-table td:nth-child(3) {
+  width: 40%;
 }
 .labo-table select,
 .labo-table input {
@@ -135,6 +149,10 @@ button.secondary {
 .modal-score .score-main {
   font-size: 26px;
   margin: 0;
+}
+.modal-score .score-main .score-value {
+  display: inline-block;
+  margin-top: 4px;
 }
 
 .modal {
@@ -204,4 +222,47 @@ button.secondary {
 }
 .codes-table th {
   background: #f8f8f8;
+}
+
+@media (max-width: 720px) {
+  body {
+    padding: 12px 10px 18px;
+  }
+  .page {
+    max-width: 640px;
+    padding: 20px 16px 36px;
+  }
+  h1 {
+    font-size: 44px;
+    line-height: 1.1;
+  }
+  .inputs td {
+    font-size: 20px;
+  }
+  input[type="number"],
+  select {
+    width: 100%;
+    max-width: 120px;
+  }
+  .button-row {
+    flex-wrap: wrap;
+  }
+  .math {
+    overflow-x: auto;
+  }
+  .modal-content {
+    width: min(740px, 96vw);
+    max-height: 88vh;
+  }
+  .labo-table th,
+  .labo-table td {
+    padding: 6px 6px;
+    font-size: 14px;
+  }
+  .labo-table th:nth-child(3) {
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: manual;
+  }
 }
